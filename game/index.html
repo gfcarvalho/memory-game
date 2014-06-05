@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="utf-8">
+    <title>
+      Jogo da Memoria
+    </title>
+    <meta content=
+    "A simple and small HTML5 and CSS3 memory game for kids. Using CSS3 transitions and transforms."
+    name="description">
+    <link rel="stylesheet" href="assets/css/alertify.core.css" />
+    <link rel="stylesheet" href="assets/css/alertify.default.css" />
+    <link rel="stylesheet" href="assets/css/game.main.css" />
+    <link rel="stylesheet" href="assets/css/card.css" />
+    <link rel="stylesheet" href="assets/css/button.css" />
+  </head>
+  <body>
+    <section>
+      <h1 class="title">Jogo da Mem&oacute;ria</h1>    
+    </section>
+    <progress value="0" max="100">Carregando recursos</progress>
+    <section id="game-wrapper"></section>
+    <section class="buttonn-container">
+      <button id="newgame-button" class="buttonn">Novo Jogo</button>
+    </section>    
+    <footer>
+      Desenvolvido por <a href="http://gustavocarvalho.eti.br" class="link">Gustavo Carvalho</a>
+    </footer>
+    <!--<script src="scripts/alertify.min.js"></script>
+    <script src="scripts/ImageManager.js"></script>-->
+    <script src="assets/js/memory-0.1.0.js"></script>
+    <script>
+    (function (global, undefined) {
+      "use strict";      
+      
+      // get the correct document
+      var document = global.document;
+      
+      // get a local copy of ImageManager
+      var ImageManager = global.ImageManager;
+      
+      // settings
+      
+      var rows = 3, cols = 4; // dimensions of the game table (3x4)
+      var turns = 2;          // number of cards equals that makes a score (2)
+      var showTime = 2500;    // time showing cards at the beginning of the game (4500)      
+      var transition = 800;
+      
+      // resources
+      
+      var frontFaces = [                                   
+          { name: "burro", src: "assets/images/burro.jpg" },
+          { name: "cabra", src: "assets/images/cabra.jpg" },
+          { name: "cao", src: "assets/images/cao.jpg" },
+          { name: "cavalo", src: "assets/images/cavalo.jpg" },
+          { name: "cobra", src: "assets/images/cobra.jpg" },
+          { name: "coelho", src: "assets/images/coelho.jpg" },
+          { name: "dragao", src: "assets/images/dragao.jpg" },
+          { name: "galinha", src: "assets/images/galinha.jpg" },
+          { name: "gato", src: "assets/images/gato.jpg" },
+          { name: "macaco", src: "assets/images/macaco.jpg" },
+          { name: "ovelha", src: "assets/images/ovelha.jpg" },
+          { name: "porco", src: "assets/images/porco.jpg" },
+          { name: "rato", src: "assets/images/rato.jpg" },
+          { name: "tigre", src: "assets/images/tigre.jpg" },
+          { name: "vaca", src: "assets/images/vaca.jpg" },
+          { name: "vacapreta", src: "assets/images/vaca_preta.jpg" }
+        ];
+      var backFaces = [
+          {name: "fundo", src:"assets/images/fundo2.jpg"},
+          {name: "fundo2", src:"assets/images/fundo.jpg"},
+          {name: "fundo3", src:"assets/images/fundo.jpg"},
+          {name: "fundo4", src:"assets/images/fundo2.jpg"}
+      ];
+      
+      /*var memoria = new Game({
+        rows: 3,
+        cols: 4,
+        turns: 2,
+        show: 4500, // show on init -> 0 means dont show
+        showOnError, // time holding the cards face up after a mistake
+        front: frontFaces,
+        back: backFaces
+      });*/
+      
+      // other variables
+      
+      var i = 0, j = 0;                   // iterators
+      var totalCards = rows * cols;       // number of cards in game
+      var winCounter = totalCards/turns;  // number of correct movements to win the game    
+      var cards      = [];                // list of the cards picked for a game
+      var canClick   = false;             // flag to control UI events                
+      var selections = [];                // list of cards correctly selected 
+      var progress   = document.querySelector("progress");      // progress bar
+      var container  = document.getElementById("game-wrapper"); // game container
+      var gameBoard = null;                      // the game board  
+      //============================================================================================      
+      var shuffle = game.utils.shuffle;   // shorthand for the shuffle array function
+      var Card = game.Card;               // shorthand for the Card "class"
+      var Board = game.Board;             // shorthand for the Board "class"
+      
+      // game functions  
+      
+      function check() {
+          // validate the table
+          if(totalCards%turns != 0 || turns < 2) {
+              game.ui.alert("Ajusta o tabuleiro direito ow!!!");
+              throw new Error("Configuracoes de tabuleiro invalidas.");
+          } 
+      }
+      
+      function preventClicks(time) {
+        var waitTime = time+transition+30;
+        // allow user inputs only after the flip animation had finished
+          setTimeout(function () {
+                canClick = true;
+          }, waitTime);
+      }
+      
+      /** 
+       * Pick up cards randomly and select the back of the card, also randomly 
+       */
+      function pickupCards() {
+          var card;
+          shuffle(frontFaces);
+          shuffle(backFaces);    
+          for (i = 0; i < totalCards / turns; i++) {
+              for (j = 0; j < turns; j++) { // repeat cards j times
+                  card = new Card(frontFaces[i].name, frontFaces[i].src, backFaces[0].src);
+                  cards.push(card);
+              }
+          }
+      }
+      
+      function initGame() {                    
+          check(); 
+          
+          game.ui.log("Memorize as figuras", showTime);
+          pickupCards();
+          shuffle(cards);  
+          gameBoard = new Board(container, cards, rows, cols);
+          preventClicks(showTime);   
+          gameBoard.flipAllCards(showTime);
+          gameBoard.fadeIn();
+          game.events.addEventListener("cellclick", onCellClick);
+      }
+
+      function restartGame() {
+          game.events.removeEventListener("cellclick", onCellClick);
+          winCounter = totalCards/turns;
+          cards.length = 0;    
+          selections.length = 0;
+          canClick = false;   
+          if (gameBoard !== null) {
+            gameBoard.destroy(); 
+            gameBoard = null;
+          }
+          //initGame();       
+      } 
+      
+      function gameWin() {
+        setTimeout((function() {
+            game.ui.reset();
+            game.ui.alert("Parab&eacute;ns! Jogo conclu&iacute;do!", restartGame);
+        }), 1200);
+      }
+
+      function onCellClick(e) {    
+        e.preventDefault();
+        
+        var i;        
+        var movOK = true;
+        var thisCard = gameBoard.getCard(e.cell); // get the card
+
+        // this card can be clicked?
+        if(!thisCard.hold && !thisCard.done && canClick) { // yes?
+            // show the card and select it
+            thisCard.flip();
+            selections.push(thisCard);
+            
+            game.ui.log(thisCard.name, transition);
+
+            // compare selections
+            for (i = 1; i < selections.length; i++) {                
+                if (selections[i].name !== selections[0].name) {
+                    movOK = false; // invalid move
+                    break;
+                }               
+            }
+
+            if (movOK) { // is a valid move?
+                // yes?
+                if(selections.length < turns) { // need more equal cards?
+                    // yes? 
+                    thisCard.block(); // hold this card face up
+                } else { // no? all cards of a type were found
+                    
+                    // play animations for all selected cards and flag the cards done
+                    for (i = 0; i < selections.length; i++) {
+                        selections[i].found();                         
+                    }
+                    selections.length = 0; // clean selections                    
+                    winCounter--; // compute a right move
+                    // check if there is more cards to flip (more movements)
+                    if(winCounter === 0) { // no?
+                        // so, GG, victory!!!
+                        gameWin();
+                    }                    
+                }
+            } else { // no? -> invalid move
+                for (i = 0; i < selections.length; i++) {
+                    selections[i].release(); // release the cards                   
+                }
+                canClick = false; // avoid click events to trigger
+                
+                // flip back the selected cards after show the cards for a little while
+                setTimeout(function() {
+                    var i;
+                    for (i = 0; i < selections.length; i++) {
+                        selections[i].flip();                    
+                    }
+                    selections.length = 0; // clean selections
+                }, 1500);
+                
+                // allow click events after the flip animation 
+                setTimeout(function() {
+                    canClick = true;
+                }, 2330);
+            }
+
+        }
+        return false;
+      }
+      
+      //============================================================================================
+      // load processes
+      
+      function onProgress() {
+          var p = ImageManager.getProgress();
+          progress.value = p;
+      }
+
+      function onComplete() {          
+          if(ImageManager.hasFinished()) {
+              // progress.remove();
+              document.body.removeChild(progress);   
+              
+              openMainMenu();
+              //initGame();
+          }
+      }
+
+      // Pre-load all images
+      ImageManager.load(frontFaces, onComplete, onProgress);
+      ImageManager.load(backFaces, onComplete, onProgress);
+      
+      //============================================================================================
+      
+      // toggle fullscreen on caps lock
+      document.documentElement.addEventListener("keydown", function(e) {        
+          switch(e.keyCode) {
+          case 20: // CapsLock
+              e.preventDefault();
+              game.ui.toggleFullScreen();
+              break;
+          }
+          return false;
+      }, false);
+      
+      function openMainMenu() {
+        var button = document.querySelector("#newgame-button");
+        button.onclick = function (e) {
+            restartGame();
+            initGame();
+        }
+      }
+      
+    // get at whatever the global object is, like window in browsers
+    })((function(){return this}.call()));
+    </script>
+  </body>
+</html>
