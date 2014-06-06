@@ -1,6 +1,5 @@
 [Jogo da Memoria](http://gfcarvalho.github.io/memory-game)
 ===================
-[![Code Climate](https://codeclimate.com/github/gfcarvalho/memory-game.png)](https://codeclimate.com/github/gfcarvalho/memory-game)
 
 By Gustavo Carvalho
 
