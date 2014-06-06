@@ -3,14 +3,14 @@
 
 By Gustavo Carvalho
 
-An old fashion child game to improve memory. 
+A classic memory game for childs.
 
 Made with S2 and Javascript / HTML5 / CSS3
 
 It uses [ImageManager.js](http://gfcarvalho.github.io/ImageManager.js)
 
 ##Features
-- Only easy mode with 4x4 grid available for now.
+- Only easy mode with 3x4 grid available for now.
 
 ##Future
 - More game modes
@@ -19,4 +19,4 @@ It uses [ImageManager.js](http://gfcarvalho.github.io/ImageManager.js)
 - ... and much more
 
 
-[Play it here](https://jogos.gustavocarvalho.eti.br/memoria)
+[Play it here](https://gustavocarvalho.eti.br/memory-game)
