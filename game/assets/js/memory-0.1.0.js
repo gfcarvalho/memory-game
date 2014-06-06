@@ -802,6 +802,7 @@
             function loadImage(obj) {
                 var name = null,
                     src = null,
+                    tagName = null,
                     onload = EMPTY_FN,
                     onerror = EMPTY_FN;
 
@@ -834,7 +835,8 @@
                 // creates a new Image object and add it to this instance's collection
                 
                 collection[name] = new Image();
-                collection[name].name = name;
+                //collection[name].name = name;
+                collection[name].name = tagName;
                 collection[name].onload = function () {
                     onImageLoad(name, src, onload);
                 };
@@ -1440,6 +1442,8 @@
         flip_container = document.createElement('div');
         flip_container.className ='flip-container';
         flip_container.name = name;
+        /*flip_container.style.width = (window.innerWidth - (50)) / 4;
+        flip_container.style.height = (window.innerHeight - (40)) / 3;*/
 
         flipper = document.createElement('div');
         flipper.className = "flipper";        
@@ -1451,15 +1455,17 @@
         front.className = "front";
         front_img = new Image();
         front_img.src = src_front;
-        front_img.className = "card-face";
+        front_img.className = "card-face";    
         front.appendChild(front_img);
+        
 
         back = document.createElement('div');
         back.className = "back";  
         back_img = new Image();
         back_img.src = src_back;
         back_img.className = "card-face";
-        back.appendChild(back_img);        
+        back.appendChild(back_img);
+        
 
         flipper.appendChild(front);
         flipper.appendChild(back);
@@ -1541,8 +1547,8 @@
     /**
      * Creates a new game board - singleton???
      * criar tabela de itens? onde item pode ser qq coisa?
-     * passar tabela de itens e então criar tabela dom baseado na tabela virtual?
-     * criar classe item - qq coisa basta herdar de item(item só precisa ter um campo node (HTMLElement))
+     * passar tabela de itens e ent&atilde;o criar tabela dom baseado na tabela virtual?
+     * criar classe item - qq coisa basta herdar de item(item precisa ter um campo node (HTMLElement))
      * @require Card
      */
     function Board(container, cards, rows, cols) {

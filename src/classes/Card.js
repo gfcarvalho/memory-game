@@ -20,6 +20,8 @@
         flip_container = document.createElement('div');
         flip_container.className ='flip-container';
         flip_container.name = name;
+        /*flip_container.style.width = (window.innerWidth - (50)) / 4;
+        flip_container.style.height = (window.innerHeight - (40)) / 3;*/
 
         flipper = document.createElement('div');
         flipper.className = "flipper";        
@@ -31,15 +33,17 @@
         front.className = "front";
         front_img = new Image();
         front_img.src = src_front;
-        front_img.className = "card-face";
+        front_img.className = "card-face";    
         front.appendChild(front_img);
+        
 
         back = document.createElement('div');
         back.className = "back";  
         back_img = new Image();
         back_img.src = src_back;
         back_img.className = "card-face";
-        back.appendChild(back_img);        
+        back.appendChild(back_img);
+        
 
         flipper.appendChild(front);
         flipper.appendChild(back);

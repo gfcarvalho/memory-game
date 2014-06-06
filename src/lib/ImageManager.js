@@ -169,6 +169,7 @@
             function loadImage(obj) {
                 var name = null,
                     src = null,
+                    tagName = null,
                     onload = EMPTY_FN,
                     onerror = EMPTY_FN;
 
@@ -201,7 +202,8 @@
                 // creates a new Image object and add it to this instance's collection
                 
                 collection[name] = new Image();
-                collection[name].name = name;
+                //collection[name].name = name;
+                collection[name].name = tagName;
                 collection[name].onload = function () {
                     onImageLoad(name, src, onload);
                 };

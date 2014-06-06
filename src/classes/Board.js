@@ -9,8 +9,8 @@
     /**
      * Creates a new game board - singleton???
      * criar tabela de itens? onde item pode ser qq coisa?
-     * passar tabela de itens e então criar tabela dom baseado na tabela virtual?
-     * criar classe item - qq coisa basta herdar de item(item só precisa ter um campo node (HTMLElement))
+     * passar tabela de itens e ent&atilde;o criar tabela dom baseado na tabela virtual?
+     * criar classe item - qq coisa basta herdar de item(item precisa ter um campo node (HTMLElement))
      * @require Card
      */
     function Board(container, cards, rows, cols) {
