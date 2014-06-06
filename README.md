@@ -1,9 +1,13 @@
-[Memory](http://gfcarvalho.github.io/memory-game)
+[Jogo da Memoria](http://gfcarvalho.github.io/memory-game)
 ===================
 
 By Gustavo Carvalho
 
-An old fashion HTML5 memory game.
+An old fashion child game to improve memory. 
+
+Made with S2 and Javascript / HTML5 / CSS3
+
+It uses [ImageManager.js](http://gfcarvalho.github.io/ImageManager.js)
 
 ##Features
 - Only easy mode with 4x4 grid available for now.

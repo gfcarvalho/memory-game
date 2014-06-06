@@ -250,8 +250,8 @@
       function resize() {
           var w = window.innerWidth;
           var h = window.innerHeight;
-          var newW = (w - ((cols*3) * 10)) / cols;
-          var newH = (h - ((rows*3) * 10)) / rows;
+          var newW = (w - ((cols*cols) * 10)) / cols;
+          var newH = (h - ((rows*rows) * 10)) / rows;
           var size = Math.min(newW, newH);
           
           var cards = document.getElementsByClassName("flip-container");
@@ -272,10 +272,7 @@
               b.style.height = size + "px";
           }
           
-      }
-        
-    global.resize = resize;
-      
+      }      
       //========================================================================================
       // load processes
       

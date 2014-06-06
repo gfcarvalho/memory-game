@@ -1,4 +1,4 @@
-# Jogo da Memoria, made with S2 and Javascript, HTML5, CSS3
+# Jogo da Memoria, made with S2 and Javascript / HTML5 / CSS3
 
 ## CHANGE LOG
 
@@ -6,6 +6,10 @@
 
 * First release
 
-### game 0.1.1
+### Version 0.1.1 2014-06-06
+
+* Added responsive design: Game table now fits the window and resizes automatically
+* Removed some unnecessary files
+* Fixed some minor bugs
 
 
