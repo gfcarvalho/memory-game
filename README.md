@@ -19,4 +19,4 @@ It uses [ImageManager.js](http://gfcarvalho.github.io/ImageManager.js)
 - ... and much more
 
 
-[Play it here](https://gustavocarvalho.eti.br/memory-game)
+[Play it here](http://gustavocarvalho.eti.br/memory-game)
