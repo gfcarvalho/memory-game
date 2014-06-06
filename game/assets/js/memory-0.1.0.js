@@ -1552,18 +1552,6 @@
      * @require Card
      */
     function Board(container, cards, rows, cols) {
-        /*config = {
-            container: default = document.body
-            cards: lista de cards quantidade de cartas = cards.length
-            
-            width: depende
-            height: depende
-            paddings: // distancia da borda(horizontal e vertical)
-            resize: tamanho fixo, ajustar a largura, a altura ou toda a tela
-            margin: from container
-            tamanho celula: uma vez sabendo o tamanho da tabela, calcular baseado na quantidade de cartas
-            
-        }*/
         
         this.container = container;
         this.board     = document.createElement("table");
@@ -1631,21 +1619,7 @@
             } 
         }.bind(this), delay);
     };
-    
-    /*Board.prototype.addClickEvent = function (fn) {
-        var card;
-        var i, j;
-        for( i = 0; i < this.backBoard.length; i++) {
-            for( j = 0; j < this.backBoard[i].length; j++) { 
-                card = this.backBoard[i][j];
-                if (touch) {
-                    card.node.addEventListener('touchstart', fn, false);
-                } else {
-                    card.node.addEventListener('mousedown', fn, false);
-                }
-            }
-        }
-    };*/
+
     
     Board.prototype.fadeIn = function () {
         setTimeout(function() {
