@@ -25,7 +25,7 @@ buildir = game/assets/js
 
 # CURRENT BUILD VERSION
 #GAME_VERSION=$(shell cat $(srcdir)/version | sed "s/^.*[^0-9]\([0-9]*\.[0-9]*\.[0-9]*\).*/\1/")
-GAME_VERSION= 0.1.2
+GAME_VERSION= 0.1.3
 VERSION=sed "s/@VERSION/${GAME_VERSION}/"
 
 # list of external libraries
