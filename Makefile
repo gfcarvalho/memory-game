@@ -1,8 +1,8 @@
 #######################################################################
 #   Jogo da Memoria Builder
-#   Copyright (C) 2013, Gustavo Carvalho
+#   Copyright (C) 2014, Gustavo Carvalho
 #
-#   Jogo da Memoria é licenciado sobre a MIT License.
+#   Jogo da Memoria Ã© licenciado sobre a MIT License.
 #   http://www.opensource.org/licenses/mit-license.php
 #
 #   javascript compilation / "minification" makefile
@@ -25,7 +25,7 @@ buildir = game/assets/js
 
 # CURRENT BUILD VERSION
 #GAME_VERSION=$(shell cat $(srcdir)/version | sed "s/^.*[^0-9]\([0-9]*\.[0-9]*\.[0-9]*\).*/\1/")
-GAME_VERSION= 0.1.0
+GAME_VERSION= 0.1.2
 VERSION=sed "s/@VERSION/${GAME_VERSION}/"
 
 # list of external libraries

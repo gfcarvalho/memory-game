@@ -1,6 +1,8 @@
-(function (global, game, undefined) {
+(function (global, undefined) {
 
+    // "imports"
     var document = global.document;
+    var game = global.game;
 
     // replace to Modernizr
 
@@ -64,6 +66,7 @@
         
     };
     
+    // "exports"
     game.system = system;    
 	
-})((function(){return this}.call()), (function(){return this}.call()).game);
+})((function(){return this}.call()));

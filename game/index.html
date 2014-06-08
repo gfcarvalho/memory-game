@@ -29,7 +29,7 @@
     </footer>
     <!--<script src="scripts/alertify.min.js"></script>
     <script src="scripts/ImageManager.js"></script>-->
-    <script src="assets/js/memory-0.1.0.js"></script>
+    <script src="assets/js/memory-0.1.2.js"></script>
     <script>
     (function (global, undefined) {
         "use strict";
@@ -46,25 +46,22 @@
         game.start();
          */
 
-        // imports
-
-        var document = global.document; // get the correct document
+        // "imports"
+        var document = global.document;
         var game = global.game;
-        var ImageManager = global.ImageManager; // get a local copy of ImageManager
-        var shuffle = game.utils.shuffle; // shorthand for the shuffle array function
-        var Card = game.Card; // shorthand for the Card constructor
-        var Board = game.Board; // shorthand for the Board constructor
-
+        var shuffle = game.utils.shuffle;
+        var Card = game.Card; 
+        var Board = game.Board;       
+        var ImageManager = global.ImageManager;
+        
         // settings
-
-        var rows = 3,
-        cols = 4; // dimensions of the game table (3x4)
+        var rows = 3; // number of cards on the y-axis of the game table 
+        var cols = 4; // number of cards on the x-axis of the game table 
         var turns = 2; // number of cards equals that makes a score (2)
         var showTime = 2500; // time showing cards at the beginning of the game (4500)
         var transition = 800; // time of all transitions
 
         // resources
-
         var frontFaces = [{
                 name : "burro",
                 tagName : "Burro",
@@ -146,8 +143,7 @@
             }
         ];
 
-        // game variables
-
+        // main variables
         var i = 0, j = 0; // iterators
         var totalCards = rows * cols; // number of cards in game
         var winCounter = totalCards / turns; // number of correct movements to win the game
@@ -159,7 +155,7 @@
         var progress = document.querySelector("progress"); // progress bar
         var container = document.getElementById("game-wrapper"); // game container
 
-        // game functions
+        // main functions
 
         function check() {
             // validate the table
@@ -314,7 +310,11 @@
             var holder = null;
             var front = null;
             var back = null;
-            for (var i = 0; i < cards.length; i += 1) {
+            
+            var i;
+            
+            // resize all necessary divs
+            for (i = 0; i < cards.length; i += 1) {
                 card = cards.item(i);
                 card.style.width = size + "px";
                 card.style.height = size + "px";

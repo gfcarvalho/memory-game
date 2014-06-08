@@ -1,8 +1,11 @@
-(function (game, undefined) {
-    "use strict";   
+(function (global, undefined) {
+    "use strict";
+    
+    // "imports"
+    var document = global.document;
+    var game = global.game;
     
     // User interface helpers
-
     var ui = {
         fullScreen: false,
         
@@ -48,11 +51,10 @@
         }
     };
     
-    // DOM manipulation helpers
-    
+    // DOM manipulation helpers    
     var dom = {
         /** 
-         * Clean the game table 
+         * Clean up the game table 
          */
         removeChilds: function (node) {
             var last;
@@ -60,8 +62,7 @@
         }    
     };
     
-    // Javascript helpers
-    
+    // Javascript helpers    
     var utils = {
         /** 
          * Shuffles an array
@@ -82,7 +83,13 @@
 
           return array;
         },
-
+        /** 
+         * Removes one or more items from a position on an array
+         * @param array the specific array
+         * @param from the index of the item to be deleted
+         * @param qtd the quantity of items to be deleted
+         *
+         */
         remove: function(array, from, qtd) {
             var q = 1;
             if(typeof qtd !== "undefined") {
@@ -90,17 +97,21 @@
             }
             array.splice(from, q);
         },
-        
+        /** 
+         * Removes a specific object (if it exists) from an array
+         *
+         */
         removeObject: function(array, object)
         { 
-            var index = this.indexOf(object, 0);
-            (index == -1) || this.splice(index, 1);
+            var index = array.indexOf(object, 0);
+            (index == -1) || array.splice(index, 1);
         }
     };
     
+    // "exports"
     game.dom = dom;
     game.ui = ui;
     game.utils = utils;    
 	
 // return the game module from global object
-})((function(){return this}.call()).game);
+})((function(){return this}.call()));

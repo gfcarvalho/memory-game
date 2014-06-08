@@ -1,16 +1,16 @@
-(function (game, document, undefined) {
+(function (global, undefined) {
     "use strict";
     
     // "imports"
+    var document = global.document;
+    var game = global.game;
     var touch = game.system.touchSupported;
     var evts = game.events;
     var dom = game.dom;
 
     /**
-     * Creates a new game board - singleton???
-     * criar tabela de itens? onde item pode ser qq coisa?
-     * passar tabela de itens e ent&atilde;o criar tabela dom baseado na tabela virtual?
-     * criar classe item - qq coisa basta herdar de item(item precisa ter um campo node (HTMLElement))
+     * Board constructor: Creates a new game board
+     * @constructor only created with new
      * @require Card
      */
     function Board(container, cards, rows, cols) {
@@ -25,7 +25,7 @@
         var card;        
         this.board.className = "game-board";
         
-        if (rows*cols < cards.length) {
+        if (rows * cols < cards.length) {
             throw new Error("configuracoes invalidas");
         }
 
@@ -128,8 +128,8 @@
         }]);
     };
 	
-    // add this Class to the game object
+    // "exports"
     game.Board = Board;   
 	
 // return the game module from global object
-})((function(){return this}.call()).game, (function(){return this}.call()).document);
+})((function(){return this}.call()));

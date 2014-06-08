@@ -5,22 +5,22 @@
  * @see https://github.com/daniellmb/MinPubSub
  * Licensed under the MIT license.
  */
-(function (game, undefined) {
+(function (global, undefined) {
+    
+    // "imports"
+    var game = global.game;
 
 	/**
 	 * Event Manager. 
 	 * @namespace
 	 * @memberOf game
 	 */	
-	game.events = (function () {				
+	var events = (function () {				
 		/** topic/subscription hash
 		 * @private
 		 */
-		var cache = {};
-		
-		
-		
-		// ---------------------------------------------------------		
+		var cache = {};	
+        
 	    /**
 		 * Publish some data on a named topic.
 		 *	@name core.event#publish
@@ -106,5 +106,8 @@
             removeEventListener : unsubscribe
         };
 	})();
+    
+    // "exports"
+    game.events = events;
 
-})((function(){return this}.call()).game);
+})((function(){return this}.call()));

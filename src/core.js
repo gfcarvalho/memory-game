@@ -1,7 +1,9 @@
 (function (global, undefined) {
     "use strict";
     
+    // "import" the correct document
     var document = global.document;
+    
     var game;
     
     /** The game engine */
@@ -23,14 +25,8 @@
             debug: alertify.debug            
     };
     
-    // AMD, CommonJS and window support
-	if (typeof define === "function") {
-		define([], function () { return game; });
-	} else if (typeof module !== 'undefined' && module.exports) {
-        module.exports = game;
-    } else if (typeof global.game === "undefined") {
-		global.game = game;
-    }
+    // "export" game to the global variable
+    global.game = game;
     
 // get at whatever the global object is, like window in browsers
 })((function(){return this}.call()));

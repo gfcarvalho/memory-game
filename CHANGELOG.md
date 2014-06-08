@@ -12,4 +12,8 @@
 * Removed some unnecessary files
 * Fixed some minor bugs
 
+### Version 0.1.2 2014-06-07
+
+* Improved code quality
+
 

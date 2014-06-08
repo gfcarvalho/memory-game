@@ -1,12 +1,15 @@
-(function (game, undefined) {
+(function (global, undefined) {
     "use strict";
     
+    var game = global.game; // get a local copy ("import") of game variable
+    
 	/** 
-     * Class Card
-     * @class only created with new
+     * Card constructor
+     * @constructor only created with new
      */
     function Card(name, src_front, src_back) {
-        // private :            
+        // private:
+        
         var flip_container;  // a div element that contains the whole card
         var flipper;         // a div inside the container used to animator the cards (see card.css)
         var front;           // the div that contains the front image 
@@ -20,8 +23,6 @@
         flip_container = document.createElement('div');
         flip_container.className ='flip-container';
         flip_container.name = name;
-        /*flip_container.style.width = (window.innerWidth - (50)) / 4;
-        flip_container.style.height = (window.innerHeight - (40)) / 3;*/
 
         flipper = document.createElement('div');
         flipper.className = "flipper";        
@@ -47,7 +48,6 @@
 
         flipper.appendChild(front);
         flipper.appendChild(back);
-        //flip_container.appendChild(flipper);
         
         // independent node for other graphics iterations (isolated from flip card) 
         animator.appendChild(flipper);        
@@ -110,8 +110,8 @@
         this.hold = false;
     };
     
-    // add to game object
+    // exports
     game.Card = Card;
 	
 // return the game module from global object
-})((function(){return this}.call()).game);
+})((function(){return this}.call()));
