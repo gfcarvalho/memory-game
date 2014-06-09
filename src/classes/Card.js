@@ -21,7 +21,7 @@
         // initialization code :
         
         flip_container = document.createElement('div');
-        flip_container.className ='flip-container';
+        flip_container.className ='card';
         flip_container.name = name;
 
         flipper = document.createElement('div');

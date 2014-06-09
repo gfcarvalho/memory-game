@@ -1,5 +1,5 @@
 /* entire container, keeps perspective */
-.flip-container {
+.card {
   -webkit-perspective: 500;
   -moz-perspective: 500;
   -ms-perspective: 500;
@@ -8,14 +8,14 @@
   margin: 2px;
 }
 @media (min-width: 640px) {
-    .flip-container {
+    .card {
       margin: 6px; } }
 @media (min-width: 800px) {
-    .flip-container {
+    .card {
       margin: 10px } }
   
 /* flip the pane */
-.flip-container.flip .flipper {
+.card.flip .flipper {
   -webkit-transform: rotateY(180deg);
   -moz-transform: rotateY(180deg);
   -ms-transform: rotateY(180deg);
@@ -23,8 +23,7 @@
   transform: rotateY(180deg);
 }
 
-/* container for a card */
-.flip-container, .front, .back {
+.card, .front, .back {
   width: 150px;
   height: 150px;
 }
@@ -63,13 +62,14 @@
 }
 
 /* back, initially hidden pane */
+/*if IE remove this to make it functional*/
 .back {
   z-index: 1;
   -webkit-transform: rotateY(180deg);
   -moz-transform: rotateY(180deg);
-  -ms-transform: rotateY(180deg);
+  /*-ms-transform: rotateY(180deg);*/
   -o-transform: rotateY(180deg); 
-  transform: rotateY(180deg); /*if IE remove this to make it functional*/
+  /*transform: rotateY(180deg);*/
   cursor: pointer;
 }
 
@@ -92,7 +92,7 @@
       box-shadow: 0 3px 5px #69FFFF inset, 0 -1px 1px #69FFFF inset; } }
 
 /* remove from table animation */
-.flip-container.animate .animator {
+.card.animate .animator {
   -webkit-transform: rotateY(720deg);
   -moz-transform: rotateY(720deg);
   -ms-transform: rotateY(720deg);
@@ -116,10 +116,10 @@
 }
 
 /* Old Opera and IE work around */
-.flip-container.flip .flipper .front{
+.card.flip .flipper .front{
   z-index: 1;
 }
 
-.flip-container.flip .flipper .back{
+.card.flip .flipper .back{
   z-index: 2;
 }

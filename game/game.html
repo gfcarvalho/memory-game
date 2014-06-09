@@ -332,11 +332,9 @@
             
             var newW = (w - (2 * cols * gap) ) / cols;
             var newH = (h - (2 * rows * gap) ) / rows;
-            /*var newW = (w - ((cols * cols) * 10) -10) / cols;
-            var newH = (h - ((rows * rows) * 10) -10) / rows;*/
             var size = Math.min(newW, newH);
 
-            var cards = document.getElementsByClassName("flip-container");
+            var cards = document.getElementsByClassName("card");
             var card = null;
             var holder = null;
             var front = null;
