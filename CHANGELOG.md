@@ -16,6 +16,10 @@
 
 * Improved code quality
 
-### Version 0.1.3 2014-06-
+### Version 0.1.3 2014-06-08
+
+* Split index page from the game
+* Improved code quality
+* Improved auto resize methods
 
 
