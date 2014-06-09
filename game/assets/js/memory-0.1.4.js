@@ -1110,7 +1110,7 @@
     /** The game engine */
     game = {
             mod : "development",
-            version : "0.1.3",                  
+            version : "0.1.4",                  
             
             // classes
             Board: undefined,

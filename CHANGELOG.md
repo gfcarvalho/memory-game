@@ -22,5 +22,7 @@
 * Improved code quality
 * Improved auto resize methods
 
+### Version 0.1.4
+
 
 
