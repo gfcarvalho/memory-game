@@ -10,14 +10,24 @@
   background: rgba(0,0,0,0); 
 }
 
+.st-content {
+	overflow-y: hidden;
+	background: #f3efe0;
+}
+
 .centralize {
     position: absolute;
     left: 50%;
     top: 50%;
 }
 
+#game-wrapper {
+  width: 100%;
+  /*height: 80%;*/
+}
+
 .box {
-  display: -webkit-box;
+  /*display: -webkit-box;
   -webkit-box-orient: vertical;
   -webkit-box-align: center;
   -webkit-box-pack: center;
@@ -33,14 +43,10 @@
           box-orient: vertical;
           box-align: center;
           box-pack: center;
-  width: 100%; 
-  height: 100%;
+  width: 100%;*/
 }
 
 .game-board {
-  position: absolute;
-  left: 0;
-  top: 0;
   margin: 0 auto;
   opacity: 0;
 }
@@ -52,4 +58,8 @@
 	-o-transition: 2.5s;
 	transition: 2.5s;
   opacity: 1;
+}
+
+.button-container {
+    text-align: center;
 }

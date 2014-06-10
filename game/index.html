@@ -23,7 +23,7 @@
     <!--  CSS -->
     <link rel="stylesheet" href="assets/css/alertify.core.css">
     <link rel="stylesheet" href="assets/css/alertify.default.css">
-    <link rel="stylesheet" href="assets/css/game.css">
+    <!--<link rel="stylesheet" href="assets/css/game.css">-->
     <link rel="stylesheet" href="assets/css/card.css">
     <link rel="stylesheet" href="assets/css/progress.css">
     
@@ -66,7 +66,7 @@
                   <progress value="0" max="100" class="progress-bar">Carregando recursos</progress>
                   <div class="main clearfix">
                       <div id="st-trigger-effects" class="column">
-                          <button data-effect="st-effect-1">Menu Principal</button>                          
+                          <button id="open-menu" data-effect="st-effect-1">Menu Principal</button>                          
                       </div>                      
                       <!--<div class="button-container">
                         <button id="newgame-button" class="button">Novo Jogo</button>
@@ -165,18 +165,16 @@
         ];
 
         var progress = document.querySelector("progress"); // progress bar
-        //var button = document.querySelector("#newgame-button");
+        var button = document.querySelector("#open-menu");
 
         
         function initGame() {
             global.location.href="game.html";
         }
 
-        function openMainMenu() {            
-            /*button.style.display = "inline-block";
-            button.onclick = function (e) {
-                initGame();
-            }*/
+        function showButtons() {            
+            button.style.display = "inline-block";    
+            //button.toggleClass("visible");
         }
 
         function onProgress() {
@@ -187,7 +185,7 @@
         function onComplete() {
             if (ImageManager.hasFinished()) {        
                 progress.style.display = "none";
-                //openMainMenu();
+                showButtons();
             }
         }
 

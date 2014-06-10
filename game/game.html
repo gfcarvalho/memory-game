@@ -27,7 +27,7 @@
     <link rel="stylesheet" href="assets/css/card.css">
     
     <!-- Scripts -->
-    <script src="assets/js/menu/modernizr.custom.js"></script>
+    <script src="assets/js/modernizr.custom.js"></script>
   
   </head>
   
@@ -50,24 +50,27 @@
       
       <!-- content push wrapper -->
       <div class="st-pusher">
-          <div class="st-content"><!-- this is the wrapper for the content -->
-              <div id="game-wrapper" class="st-content-inner box"><!-- extra div for emulating position:fixed of the menu -->
-                  <!--<div id="game-wrapper" class="centralize box"></div>-->
-                  <div class="main clearfix">
-                      <div id="st-trigger-effects" class="column">
-                          <button data-effect="st-effect-1">Menu Principal</button>                             
-                      </div>                      
-                  </div><!-- /main -->
-              </div><!-- /st-content-inner -->
-          </div><!-- /st-content -->
+        <div class="st-content"><!-- this is the wrapper for the content -->
+          <div class="st-content-inner"><!-- extra div for emulating position:fixed of the menu --> 
+            <!-- Top Navigation -->
+            <div class="codrops-top clearfix">
+              <a class="icon" href="index.html"><span>Home</span></a>
+                <span class="right"><a class="icon" href="http://gustavocarvalho.eti.br/jogos"><span>+ jogos</span></a></span>
+            </div>
+            <div id="game-wrapper" class="box"></div>
+            <div id="st-trigger-effects" class="button-container">
+                <button id="open-menu" data-effect="st-effect-1">Menu Principal</button>
+            </div>            
+          </div><!-- /st-content-inner -->
+         </div><!-- /st-content -->
       </div><!-- /st-pusher -->
-  </div><!-- /st-container -->    
+    </div><!-- /st-container -->    
     
     <!-- Javascript-->  
     <!--<script src="scripts/alertify.min.js"></script>
     <script src="scripts/ImageManager.js"></script>-->
-    <script src="assets/js/menu/classie.js"></script>
-    <script src="assets/js/menu/sidebarEffects.js"></script>
+    <script src="assets/js/classie.js"></script>
+    <script src="assets/js/sidebarEffects.js"></script>
     <script src="assets/js/engine/memory-0.1.4.js"></script>
     <script>
     (function (global, undefined) {
@@ -191,6 +194,7 @@
         var selections = []; // list of cards correctly selected
         var gameBoard = null; // the game board
         var container = document.getElementById("game-wrapper"); // game container
+        var button = document.querySelector("#open-menu");
 
         // main functions
 
@@ -227,7 +231,7 @@
 
         function initGame() {
             check();
-            game.ui.log("Memorize as figuras", showTime);
+            //game.ui.log("Memorize as figuras", showTime);
             pickupCards();
             shuffle(cards);
             gameBoard = new Board(container, cards, rows, cols);
@@ -271,7 +275,7 @@
                 thisCard.flip();
                 selections.push(thisCard);
 
-                game.ui.log(thisCard.name, transition);
+                //game.ui.log(thisCard.name, transition);
 
                 // compare selections
                 for (i = 1; i < selections.length; i++) {
@@ -328,17 +332,10 @@
       
         function resize () {
             var widthToHeight = cols/rows; // aspect ratio
+           
             var newWidth = global.innerWidth; 
-            var newHeight = global.innerHeight;
+            var newHeight = global.innerHeight - 70;
             var newWidthToHeight = newWidth / newHeight;
-
-            /*if(stretchToFit) {
-                // fit to screen (overrides the aspect ratio)		
-                widthToHeight = global.innerWidth/global.innerHeight;				
-            }
-            // limit the size (to avoid a very large game table in a big display)
-            newWidth = newWidth <= maxWidth ? newWidth : maxWidth;
-            newHeight = newHeight <= maxHeight ? newHeight : maxHeight;*/
 
             // compute window aspect ratio
             newWidthToHeight = newWidth / newHeight;
@@ -350,10 +347,10 @@
                 newHeight = (newWidth / widthToHeight);
             }
             
-            container.style.height = Math.floor(newHeight) + 'px';
+            /*container.style.height = Math.floor(newHeight) + 'px';
             container.style.width = Math.floor(newWidth) + 'px';
 
-            /*container.style.marginTop = Math.floor((-newHeight / 2)) + 'px'; 
+            container.style.marginTop = Math.floor((-newHeight / 2)) + 'px'; 
             container.style.marginLeft = Math.floor((-newWidth / 2)) + 'px'; */ 
             
             resizeGameTable(newWidth, newHeight);
@@ -399,6 +396,11 @@
         }
         //========================================================================================
         // load processes
+      
+        function showButtons() {            
+            button.style.display = "inline-block";    
+            //button.toggleClass("visible");
+        }
 
         function onProgress() {
             /*var p = ImageManager.getProgress();
@@ -409,6 +411,8 @@
             if (ImageManager.hasFinished()) {
                 // progress.remove();
                 //document.body.removeChild(progress);
+                //progress.style.display = "none";
+                showButtons();
                 initGame();
             }
         }
