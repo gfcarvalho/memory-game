@@ -17,12 +17,12 @@
     <!-- Menu -->
     <link rel="stylesheet" href="assets/css/menu/normalize.css">
     <link rel="stylesheet" href="assets/css/menu/icons.css">
+    <link rel="stylesheet" href="assets/css/menu/demo.css">
     <link rel="stylesheet" href="assets/css/menu/component.css">
     
     <!-- CSS -->
     <link rel="stylesheet" href="assets/css/alertify.core.css">
     <link rel="stylesheet" href="assets/css/alertify.default.css">
-    <link rel="stylesheet" href="assets/css/main.css">
     <link rel="stylesheet" href="assets/css/game.css">
     <link rel="stylesheet" href="assets/css/card.css">
     
@@ -31,13 +31,44 @@
   
   </head>
   
-  <body>    
-    <div id="game-wrapper" class="centralize box"></div>
+  <body>
+    <div id="st-container" class="st-container st-effect-1">
+       <!-- 	
+       menu will be on top of the push wrapper
+       -->
+       <nav class="st-menu st-effect-1" id="menu-1">
+          <h2 class="icon">Menu Principal</h2>
+          <ul>
+            <li><a class="icon" href="game.html">Novo jogo</a></li>
+            <li><a class="icon" href="#">Conquistas</a></li>
+            <li><a class="icon" href="#">Ranking</a></li>          
+            <li><a class="icon" href="#">Op&ccedil;&otilde;es</a></li>
+            <li><a class="icon" href="#">Cr&eacute;ditos</a></li>
+            <!--<li><a class="icon icon-wallet" href="#">Cr&eacute;ditos</a></li>-->
+          </ul>
+       </nav>
+      
+      <!-- content push wrapper -->
+      <div class="st-pusher">
+          <div class="st-content"><!-- this is the wrapper for the content -->
+              <div id="game-wrapper" class="st-content-inner box"><!-- extra div for emulating position:fixed of the menu -->
+                  <!--<div id="game-wrapper" class="centralize box"></div>-->
+                  <div class="main clearfix">
+                      <div id="st-trigger-effects" class="column">
+                          <button data-effect="st-effect-1">Menu Principal</button>                             
+                      </div>                      
+                  </div><!-- /main -->
+              </div><!-- /st-content-inner -->
+          </div><!-- /st-content -->
+      </div><!-- /st-pusher -->
+  </div><!-- /st-container -->    
     
     <!-- Javascript-->  
     <!--<script src="scripts/alertify.min.js"></script>
     <script src="scripts/ImageManager.js"></script>-->
-    <script src="assets/js/memory-0.1.4.js"></script>
+    <script src="assets/js/menu/classie.js"></script>
+    <script src="assets/js/menu/sidebarEffects.js"></script>
+    <script src="assets/js/engine/memory-0.1.4.js"></script>
     <script>
     (function (global, undefined) {
         "use strict";
@@ -322,8 +353,8 @@
             container.style.height = Math.floor(newHeight) + 'px';
             container.style.width = Math.floor(newWidth) + 'px';
 
-            container.style.marginTop = Math.floor((-newHeight / 2)) + 'px'; 
-            container.style.marginLeft = Math.floor((-newWidth / 2)) + 'px';  
+            /*container.style.marginTop = Math.floor((-newHeight / 2)) + 'px'; 
+            container.style.marginLeft = Math.floor((-newWidth / 2)) + 'px'; */ 
             
             resizeGameTable(newWidth, newHeight);
         }

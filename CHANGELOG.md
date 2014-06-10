@@ -24,5 +24,8 @@
 
 ### Version 0.1.4
 
+* New Layout Design
+* Added Side Menu
+
 
 

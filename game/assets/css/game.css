@@ -38,6 +38,9 @@
 }
 
 .game-board {
+  position: absolute;
+  left: 0;
+  top: 0;
   margin: 0 auto;
   opacity: 0;
 }

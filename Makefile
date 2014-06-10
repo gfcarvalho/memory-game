@@ -21,7 +21,7 @@ GCC_OPTION =
 
 # Set the source directory
 srcdir = src
-buildir = game/assets/js
+buildir = game/assets/js/engine
 
 # CURRENT BUILD VERSION
 #GAME_VERSION=$(shell cat $(srcdir)/version | sed "s/^.*[^0-9]\([0-9]*\.[0-9]*\.[0-9]*\).*/\1/")
