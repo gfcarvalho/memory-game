@@ -8,7 +8,7 @@
 }
 
 .button {
-	display: inline-block;
+	display: none;
     cursor: pointer;
 	text-decoration: none;
 	color: #fff;
