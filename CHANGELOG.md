@@ -22,10 +22,12 @@
 * Improved code quality
 * Improved auto resize methods
 
-### Version 0.1.4
+### Version 0.1.4 2014-06-10
 
 * New Layout Design
 * Added Side Menu
+
+### Version 0.1.5
 
 
 
