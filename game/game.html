@@ -32,40 +32,55 @@
   </head>
   
   <body>
-    <div id="st-container" class="st-container st-effect-1">
-       <!-- 	
-       menu will be on top of the push wrapper
-       -->
-       <nav class="st-menu st-effect-1" id="menu-1">
-          <h2 class="icon">Menu Principal</h2>
-          <ul>
-            <li><a class="icon" href="game.html">Novo jogo</a></li>
-            <li><a class="icon" href="#">Conquistas</a></li>
-            <li><a class="icon" href="#">Ranking</a></li>          
-            <li><a class="icon" href="#">Op&ccedil;&otilde;es</a></li>
-            <li><a class="icon" href="#">Cr&eacute;ditos</a></li>
-            <!--<li><a class="icon icon-wallet" href="#">Cr&eacute;ditos</a></li>-->
-          </ul>
-       </nav>
-      
-      <!-- content push wrapper -->
-      <div class="st-pusher">
-        <div class="st-content"><!-- this is the wrapper for the content -->
-          <div class="st-content-inner"><!-- extra div for emulating position:fixed of the menu --> 
-            <!-- Top Navigation -->
-            <div class="codrops-top clearfix">
-              <a class="icon" href="index.html"><span>Home</span></a>
-                <span class="right"><a class="icon" href="http://gustavocarvalho.eti.br/jogos"><span>+ jogos</span></a></span>
-            </div>
-            <div id="game-wrapper" class="box"></div>
-            <div id="st-trigger-effects" class="button-container">
-                <button id="open-menu" data-effect="st-effect-1">Menu Principal</button>
-            </div>            
-          </div><!-- /st-content-inner -->
-         </div><!-- /st-content -->
-      </div><!-- /st-pusher -->
-    </div><!-- /st-container -->    
     
+    <div id="wrap">
+      <div class="codrops-top clearfix">
+        <a class="icon" href="index.html"><span>Home</span></a>
+          <span class="right"><a class="icon" href="http://gustavocarvalho.eti.br/jogos"><span>+ jogos</span></a></span>
+      </div>
+      <div id="st-container" class="st-container st-effect-1">
+         <!-- 	
+         menu will be on top of the push wrapper
+         -->
+         <nav class="st-menu st-effect-1" id="menu-1">
+            <h2 class="icon">Menu Principal</h2>
+            <ul>
+              <li><a class="icon icon-arrow-right-2" href="game.html">Novo jogo</a></li>
+              <li><a class="icon icon-cup" href="#">Conquistas</a></li>
+              <li><a class="icon icon-world" href="#">Ranking</a></li>          
+              <li><a class="icon icon-settings" href="#">Op&ccedil;&otilde;es</a></li>
+              <li><a class="icon icon-bulb" href="#">Ajuda</a></li>
+              <li><a class="icon icon-note" href="#">Cr&eacute;ditos</a></li>
+            </ul>
+         </nav>
+
+        <!-- content push wrapper -->
+        <div class="st-pusher">
+          <div class="st-content"><!-- this is the wrapper for the content -->
+            <div class="st-content-inner"><!-- extra div for emulating position:fixed of the menu --> 
+              <!-- Top Navigation -->
+  <!--
+              <div class="codrops-top clearfix">
+                <a class="icon" href="index.html"><span>Home</span></a>
+                  <span class="right"><a class="icon" href="http://gustavocarvalho.eti.br/jogos"><span>+ jogos</span></a></span>
+              </div>
+  -->
+              <div id="game-wrapper" class="box"></div>            
+              <div id="st-trigger-effects" class="button-container">
+                  <button id="open-menu" data-effect="st-effect-1">Menu Principal</button>
+              <div id="push"></div>
+              </div>
+            </div><!-- /st-content-inner -->
+           </div><!-- /st-content -->          
+        </div><!-- /st-pusher -->      
+      </div><!-- /st-container -->      
+</div><!-- /wrap -->  
+<div id="footer">
+  <div class="container">
+    <span>Copyright (c) 2014 - <a href="http://gustavocarvalho.eti.br" class="link">Gustavo Carvalho</a></span>
+  </div>
+</div>
+  
     <!-- Javascript-->  
     <!--<script src="scripts/alertify.min.js"></script>
     <script src="scripts/ImageManager.js"></script>-->
@@ -100,7 +115,7 @@
         var rows = 4; // number of cards on the y-axis of the game table 
         var cols = 7; // number of cards on the x-axis of the game table 
         var turns = 2; // number of cards equals that makes a score (2)
-        var showTime = 2500; // time showing cards at the beginning of the game (4500)
+        var showTime = 4500; // time showing cards at the beginning of the game (4500)
         var transition = 800; // time of all transitions
 
         // resources
@@ -332,9 +347,12 @@
       
         function resize () {
             var widthToHeight = cols/rows; // aspect ratio
+          
+          var footerH = 25;
+//          if...
            
             var newWidth = global.innerWidth; 
-            var newHeight = global.innerHeight - 70;
+            var newHeight = global.innerHeight - 70 -25;
             var newWidthToHeight = newWidth / newHeight;
 
             // compute window aspect ratio
@@ -358,15 +376,15 @@
 
         function resizeGameTable(w, h) {            
             var wW = global.innerWidth;
-            var gap;
+            var gap = 5;
             
-            if (wW < 640) {
+            /*if (wW < 640) {
                 gap = 5;
             } else if (wW < 800) {
                 gap = 9;
             } else {
                 gap = 13;
-            }
+            }*/
             
             var newW = (w - (2 * cols * gap) ) / cols;
             var newH = (h - (2 * rows * gap) ) / rows;

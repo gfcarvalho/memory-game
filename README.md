@@ -1,4 +1,4 @@
-[Jogo da Memoria](http://gfcarvalho.github.io/memory-game)
+[Jogo da Memoria](http://gustavocarvalho.eti.br/memory-game)
 ===================
 
 By Gustavo Carvalho

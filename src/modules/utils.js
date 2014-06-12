@@ -30,7 +30,7 @@
             alertify.set({
                 labels : {
                     ok     : "OK",
-                    cancel : "Cancel"
+                    cancel : "Cancelar"
                 },
                 delay : 2200,
                 buttonReverse : false,
