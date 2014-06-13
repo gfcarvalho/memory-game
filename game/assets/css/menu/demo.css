@@ -180,10 +180,6 @@ button:hover {
 	font-size: 0.9em;
 }
 
-footer {
-  text-align: center;
-}
-
 @media screen and (max-width: 46.0625em) {
 	.column {
 		width: 100%;

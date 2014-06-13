@@ -75,7 +75,7 @@
 }
 
 #footer {
-    background: #121212 !important;
+    background: #121212;
     position: relative;
 }
 @media (max-height: 450px) {
@@ -89,5 +89,5 @@
 }
 #push, #footer {
     height: 25px;
-  z-index: 999;
+    z-index: 999;
 }

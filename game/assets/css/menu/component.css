@@ -15,7 +15,8 @@ body,
 }
 
 .st-content {
-	overflow-y: scroll;
+	/*overflow-y: scroll;*/
+	overflow: hidden;
 	background: #f3efe0;
 }
 
