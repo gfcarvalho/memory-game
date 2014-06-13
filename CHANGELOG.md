@@ -27,7 +27,7 @@
 * New Layout Design
 * Added Side Menu
 
-### Version 0.1.5
+### Version 0.1.5 2014-06-13
 
 * Updated layout
 
