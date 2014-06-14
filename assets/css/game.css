@@ -11,19 +11,17 @@
 }
 
 .st-content {
-	overflow-y: hidden;
-	background: #f3efe0;
+	overflow: hidden;
 }
 
-.centralize {
+/*.centralize {
     position: absolute;
     left: 50%;
     top: 50%;
-}
+}*/
 
 #game-wrapper {
   width: 100%;
-  /*height: 80%;*/
 }
 
 .box {
@@ -62,4 +60,34 @@
 
 .button-container {
     text-align: center;
+}
+
+.st-menu {
+	height: 95%;
+}
+
+#wrap {
+    margin: 0 auto -60px;
+    min-height: 100%;
+    overflow: hidden;
+    height: 100%;
+    background: #f3efe0;
+}
+
+#footer {
+    background: #121212;
+    position: relative;
+}
+@media (max-height: 450px) {
+    #footer {
+      visibility: hidden; } 
+     }
+
+#footer .container {
+    margin-top: 35px;
+    text-align: center;
+}
+#push, #footer {
+    height: 25px;
+    z-index: 999;
 }
