@@ -31,5 +31,10 @@
 
 * Updated layout
 
+### Version 0.1.6 2014-06-16
+
+* Added Buzz as sound engine
+* Added some gameplay sounds
+
 
 

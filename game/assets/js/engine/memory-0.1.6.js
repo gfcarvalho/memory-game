@@ -1110,7 +1110,7 @@
     /** The game engine */
     game = {
             mod : "development",
-            version : "0.1.5",                  
+            version : "0.1.6",                  
             
             // classes
             Board: undefined,
@@ -1348,7 +1348,7 @@
             alertify.set({
                 labels : {
                     ok     : "OK",
-                    cancel : "Cancel"
+                    cancel : "Cancelar"
                 },
                 delay : 2200,
                 buttonReverse : false,
