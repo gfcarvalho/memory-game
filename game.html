@@ -86,7 +86,8 @@
     <script src="scripts/ImageManager.js"></script>-->
     <script src="assets/js/classie.js"></script>
     <script src="assets/js/sidebarEffects.js"></script>
-    <script src="assets/js/engine/memory-0.1.5.js"></script>
+    <script src="assets/js/buzz.min.js"></script>
+    <script src="assets/js/engine/memory-0.1.6.js"></script>
     <script>
     (function (global, undefined) {
         "use strict";
@@ -199,6 +200,14 @@
                 src : "assets/images/fundo2.jpg"
             }
         ];
+      
+      var soundWin = new buzz.sound("assets/sounds/win", {
+        formats: [ "ogg", "mp3" ]
+        /*formats: [ "ogg", "mp3", "aac", "wav" ]*/
+    });
+      var soundError = new buzz.sound("assets/sounds/error", {
+        formats: [ "ogg", "mp3" ]
+    });
 
         // main variables
         var i = 0, j = 0; // iterators
@@ -313,6 +322,9 @@
                         }
                         selections.length = 0; // clean selections
                         winCounter--; // compute a right move
+                        if (soundWin.getStateMessage() == "HAVE_ENOUGH_DATA") {
+                            soundWin.play();
+                        }
                         // check if there is more cards to flip (more movements)
                         if (winCounter === 0) { // no?
                             // so, GG, victory!!!
@@ -320,6 +332,9 @@
                         }
                     }
                 } else { // no? -> invalid move
+                     if (soundError.getStateMessage() == "HAVE_ENOUGH_DATA") {
+                            soundError.play();
+                        }
                     for (i = 0; i < selections.length; i++) {
                         selections[i].release(); // release the cards
                     }
