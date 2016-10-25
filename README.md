@@ -1,9 +1,9 @@
-[Jogo da Memoria](http://gustavocarvalho.eti.br/memory-game)
+[Jogo da Memoria](http://gh.gustavocarvalho.eti.br/memory-game)
 ===================
 
 By Gustavo Carvalho
 
-A classic memory game for childs. [Play it here](http://gustavocarvalho.eti.br/memory-game)
+A classic memory game for childs. [Play it here](http://gh.gustavocarvalho.eti.br/memory-game)
 
 Made from the ground up, with S2 and Javascript / HTML5 / CSS3
 
@@ -31,4 +31,4 @@ It uses [ImageManager.js](http://gfcarvalho.github.io/ImageManager.js)
 - ... and much more
 
 
-[Play it here](http://gustavocarvalho.eti.br/memory-game)
+[Play it here](http://gh.gustavocarvalho.eti.br/memory-game)
